@@ -143,6 +143,18 @@ class MipsInstructionAnalyzerImpl {
         case MIPS_INS_PREF:
         case MIPS_INS_SDBBP:
         case MIPS_INS_SYNC:
+        case MIPS_INS_TEQ:
+        case MIPS_INS_TEQI:
+        case MIPS_INS_TGE:
+        case MIPS_INS_TGEI:
+        case MIPS_INS_TGEIU:
+        case MIPS_INS_TGEU:
+        case MIPS_INS_TNE:
+        case MIPS_INS_TNEI:
+        case MIPS_INS_TLT:
+        case MIPS_INS_TLTI:
+        case MIPS_INS_TLTU:
+        case MIPS_INS_TLTIU:
         case MIPS_INS_SSNOP:
         case MIPS_INS_NOP: {
             break;
