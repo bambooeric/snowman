@@ -435,8 +435,7 @@ private:
             }
 
             auto name = reader.readAsciizString(optionalHeader_.ImageBase + nameRVA, 1024);
-            image_->addSymbol(std::make_unique<core::image::Symbol>(core::image::SymbolType::FUNCTION, std::move(name),
-                                                                    optionalHeader_.ImageBase + entry));
+            image_->addSymbol(std::make_unique<core::image::Symbol>(core::image::SymbolType::FUNCTION, std::move(name), optionalHeader_.ImageBase + entry));
         }
     }
 
@@ -447,16 +446,14 @@ private:
 
         auto reader = core::image::Reader(image_);
 
-        auto headerAddress =
-            optionalHeader_.ImageBase + optionalHeader_.DataDirectory[IMAGE_DIRECTORY_ENTRY_BASERELOC].VirtualAddress;
+        auto headerAddress = optionalHeader_.ImageBase + optionalHeader_.DataDirectory[IMAGE_DIRECTORY_ENTRY_BASERELOC].VirtualAddress;
 
         auto end = headerAddress + optionalHeader_.DataDirectory[IMAGE_DIRECTORY_ENTRY_BASERELOC].Size;
         const core::image::Section *section = image_->getSectionByName(".reloc");
         if (!section)
             return;
 
-        const core::image::Symbol *baseSymbol = image_->addSymbol(std::make_unique<core::image::Symbol>(
-                                                                  core::image::SymbolType::NOTYPE, "__image_base", boost::none));
+        const core::image::Symbol *baseSymbol = image_->addSymbol(std::make_unique<core::image::Symbol>(core::image::SymbolType::NOTYPE, "__image_base", boost::none));
 
         while (headerAddress < end) {
             IMAGE_BASE_RELOC_BLOCK_HEADER header;
@@ -468,10 +465,9 @@ private:
             peByteOrder.convertFrom(header.Size);
 
             int num = (header.Size - 8) / 2;
-            for (int i = 0; i < num; i++ ) {
+            for (int i = 0; i < num; i++) {
                 WORD reloc;
-                if (section->readBytes(headerAddress + 8 + i * sizeof(reloc),
-                                       reinterpret_cast<char *>(&reloc), sizeof(reloc)) != sizeof(reloc)) {
+                if (section->readBytes(headerAddress + 8 + i * sizeof(reloc), reinterpret_cast<char *>(&reloc), sizeof(reloc)) != sizeof(reloc)) {
                     log_.warning(tr("Cannot read the base reloc number %1.").arg(i));
                     return;
                 }
@@ -487,8 +483,7 @@ private:
                         {
                             size = 4;
                             DWORD currentValue;
-                            if (image_->readBytes(address,
-                                                  reinterpret_cast<char *>(&currentValue), sizeof(currentValue)) != sizeof(currentValue)) {
+                            if (image_->readBytes(address, reinterpret_cast<char *>(&currentValue), sizeof(currentValue)) != sizeof(currentValue)) {
                                 log_.warning(tr("Cannot read reloc at %1.").arg(address));
                                 continue;
                             }
@@ -499,8 +494,7 @@ private:
                         {
                             size = 8;
                             ByteAddr currentValue;
-                            if (image_->readBytes(address,
-                                                  reinterpret_cast<char *>(&currentValue), sizeof(currentValue)) != sizeof(currentValue)) {
+                            if (image_->readBytes(address, reinterpret_cast<char *>(&currentValue), sizeof(currentValue)) != sizeof(currentValue)) {
                                 log_.warning(tr("Cannot read reloc at %1.").arg(address));
                                 continue;
                             }
