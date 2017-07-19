@@ -656,11 +656,7 @@ void MainWindow::about() {
         "<p>This is version %2.</p>"
         "<p>%1 supports the following architectures:<ul>"
         "<li>ARM (little endian, big endian, powered by <a href=\"http://www.capstone-engine.org/\">Capstone</a>),</li>"
-<<<<<<< HEAD
-		"<li>MIPS (little endian, big endian, powered by <a href=\"http://www.capstone-engine.org/\">Capstone</a>),</li>"
-=======
         "<li>MIPS (little endian, big endian, powered by <a href=\"http://www.capstone-engine.org/\">Capstone</a>),</li>"
->>>>>>> 847d685d299f129b1666caf4892baa46b5d0748f
         "<li>Intel x86,</li>"
         "<li>Intel x86-64.</li>"
         "</ul></p>"
