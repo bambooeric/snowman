@@ -453,7 +453,7 @@ private:
         if (!section)
             return;
 
-        const core::image::Symbol *baseSymbol = image_->addSymbol(std::make_unique<core::image::Symbol>(core::image::SymbolType::NOTYPE, "__image_base", boost::none));
+        const core::image::Symbol *baseSymbol = image_->addSymbol(std::make_unique<core::image::Symbol>(core::image::SymbolType::NOTYPE, "(image base)", optionalHeader_.ImageBase));
 
         while (headerAddress < end) {
             IMAGE_BASE_RELOC_BLOCK_HEADER header;

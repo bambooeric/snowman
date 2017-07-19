@@ -54,6 +54,11 @@ namespace irgen {
 class InstructionAnalyzer {
 public:
     /**
+     * Virtual destructor.
+     */
+    virtual ~InstructionAnalyzer() {}
+
+    /**
      * Creates intermediate representation of the given set of instructions.
      *
      * \param[in] instructions  Valid pointer to the set of instructions.
