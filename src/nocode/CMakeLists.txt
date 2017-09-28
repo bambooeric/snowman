@@ -3,11 +3,7 @@ set(SOURCES
 )
 
 add_executable(nocode ${SOURCES})
-<<<<<<< HEAD
-target_link_libraries(nocode nc-core ${Boost_LIBRARIES} ${QT_LIBRARIES} ${CMAKE_DL_LIBS})
-=======
-target_link_libraries(nocode nc ${Boost_LIBRARIES} ${QT_LIBRARIES})
->>>>>>> cd9edcddf873fc40d7bcb1bb1eae815faedd3a03
+target_link_libraries(nocode nc ${Boost_LIBRARIES} ${QT_LIBRARIES} ${CMAKE_DL_LIBS})
 
 if (NOT ${IDA_PLUGIN_ENABLED})
     install(TARGETS nocode RUNTIME DESTINATION bin)
